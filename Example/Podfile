@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CustomSelector_Example' do
+  pod 'CustomSelector', :path => '../'
+
+  target 'CustomSelector_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

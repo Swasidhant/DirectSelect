@@ -7,18 +7,13 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Download the files within the DirectSelect folder and use. Cocoapods support coming up with a week or two.
 
 ## Requirements
 
 ## Installation
 
-CustomSelector is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'CustomSelector'
-```
+Download and use. This is still a work in progress library. Cocoapods and Carthage support will be available very very soon.
 
 ## Author
 

@@ -5,6 +5,14 @@
 [![License](https://img.shields.io/cocoapods/l/CustomSelector.svg?style=flat)](https://cocoapods.org/pods/CustomSelector)
 [![Platform](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://cocoapods.org/pods/CustomSelector)
 
+## Direct Select
+
+Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-Dropdown-ux
+">Direct select's</a> design:
+
+
+<a href="https://imgflip.com/gif/3q1b2s"><img src="https://i.imgflip.com/3q1b2s.gif" title="made at imgflip.com"/></a>
+
 ## Example
 
 Download the files within the DirectSelect folder and use. Cocoapods support coming up with a week or two.

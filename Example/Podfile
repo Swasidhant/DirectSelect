@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'CustomSelector_Example' do
-  pod 'CustomSelector', :path => '../'
+target 'DirectSelect_Example' do
+  pod 'DirectSelect', :path => '../'
 
-  target 'CustomSelector_Tests' do
+  target 'DirectSelect_Tests' do
     inherit! :search_paths
 
     

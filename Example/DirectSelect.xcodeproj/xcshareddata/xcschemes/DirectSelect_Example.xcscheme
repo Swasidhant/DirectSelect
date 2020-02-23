@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,23 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "CustomSelector_Example.app"
-               BlueprintName = "CustomSelector_Example"
-               ReferencedContainer = "container:CustomSelector.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "CustomSelector_Tests.xctest"
-               BlueprintName = "CustomSelector_Tests"
-               ReferencedContainer = "container:CustomSelector.xcodeproj">
+               BuildableName = "DirectSelect_Example.app"
+               BlueprintName = "DirectSelect_Example"
+               ReferencedContainer = "container:DirectSelect.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -48,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "CustomSelector_Tests.xctest"
-               BlueprintName = "CustomSelector_Tests"
-               ReferencedContainer = "container:CustomSelector.xcodeproj">
+               BuildableName = "DirectSelect_Tests.xctest"
+               BlueprintName = "DirectSelect_Tests"
+               ReferencedContainer = "container:DirectSelect.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CustomSelector_Example.app"
-            BlueprintName = "CustomSelector_Example"
-            ReferencedContainer = "container:CustomSelector.xcodeproj">
+            BuildableName = "DirectSelect_Example.app"
+            BlueprintName = "DirectSelect_Example"
+            ReferencedContainer = "container:DirectSelect.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -70,7 +55,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -82,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CustomSelector_Example.app"
-            BlueprintName = "CustomSelector_Example"
-            ReferencedContainer = "container:CustomSelector.xcodeproj">
+            BuildableName = "DirectSelect_Example.app"
+            BlueprintName = "DirectSelect_Example"
+            ReferencedContainer = "container:DirectSelect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -101,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "CustomSelector_Example.app"
-            BlueprintName = "CustomSelector_Example"
-            ReferencedContainer = "container:CustomSelector.xcodeproj">
+            BuildableName = "DirectSelect_Example.app"
+            BlueprintName = "DirectSelect_Example"
+            ReferencedContainer = "container:DirectSelect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

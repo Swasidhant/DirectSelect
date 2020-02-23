@@ -7,9 +7,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'CustomSelector'
+  s.name             = 'DirectSelect'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of CustomSelector.'
+  s.summary          = 'A short description of DirectSelect.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Swasidhant/CustomSelector'
+  s.homepage         = 'https://github.com/Swasidhant/DirectSelect'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Swasidhant' => 'swasidhant.chowdhury@paytm.com' }
@@ -30,11 +30,11 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'CustomSelector/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'CustomSelector' => ['CustomSelector/Assets/*.png']
-  # }
+  s.source_files = 'DirectSelect/Classes/**/*'
+#  s.resources = 'CustomSelector/Assets/**/*.*'
+   s.resource_bundles = {
+     'DirectSelect' => ['DirectSelect/Assets/**/*.*']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

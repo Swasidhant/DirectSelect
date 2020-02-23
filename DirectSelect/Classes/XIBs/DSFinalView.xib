@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="4096" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DSFinalView" customModule="CustomSelector" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rQK-42-Txw">
+                    <rect key="frame" x="0.0" y="81" width="375" height="586"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="huL-l4-nch"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="aHt-Hg-9Bz"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPB-8k-vuU">
+                    <rect key="frame" x="315" y="32" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="94r-wA-ed0"/>
+                        <constraint firstAttribute="height" constant="44" id="eIq-85-dzw"/>
+                    </constraints>
+                    <state key="normal" image="cross"/>
+                    <connections>
+                        <action selector="closePressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="l41-IP-aRT"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7go-5z-Ka8">
+                    <rect key="frame" x="167.5" y="47.5" width="40.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="rQK-42-Txw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1OR-AF-JfW"/>
+                <constraint firstItem="rQK-42-Txw" firstAttribute="top" secondItem="7go-5z-Ka8" secondAttribute="bottom" constant="14" id="2Gn-1q-hhZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rQK-42-Txw" secondAttribute="bottom" id="Anb-vY-jTO"/>
+                <constraint firstItem="UPB-8k-vuU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7go-5z-Ka8" secondAttribute="trailing" constant="5" id="DZJ-IH-Fyf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UPB-8k-vuU" secondAttribute="trailing" constant="16" id="EPh-FK-9ro"/>
+                <constraint firstItem="UPB-8k-vuU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="LbX-Yh-tl9"/>
+                <constraint firstItem="7go-5z-Ka8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="SLN-XP-IVs"/>
+                <constraint firstItem="rQK-42-Txw" firstAttribute="top" secondItem="UPB-8k-vuU" secondAttribute="bottom" constant="5" id="p83-6h-evu"/>
+                <constraint firstItem="7go-5z-Ka8" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="qok-74-3fx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rQK-42-Txw" secondAttribute="trailing" id="sXH-Qr-mz2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="closeButton" destination="UPB-8k-vuU" id="HgG-c4-HbK"/>
+                <outlet property="tableView" destination="rQK-42-Txw" id="e4p-9u-CzI"/>
+                <outlet property="tableviewLeadingConstraint" destination="1OR-AF-JfW" id="agS-CF-zcI"/>
+                <outlet property="tableviewTrailingConstraint" destination="sXH-Qr-mz2" id="gCd-xX-qTv"/>
+                <outlet property="titleLabel" destination="7go-5z-Ka8" id="97z-VR-qhk"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="cross" width="16" height="16"/>
+    </resources>
+</document>

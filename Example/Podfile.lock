@@ -1,0 +1,16 @@
+PODS:
+  - DirectSelect (0.1.0)
+
+DEPENDENCIES:
+  - DirectSelect (from `../`)
+
+EXTERNAL SOURCES:
+  DirectSelect:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DirectSelect: 024b6a0175ef227cb9ad7ee72912df07f45fd753
+
+PODFILE CHECKSUM: 0f7e083b0c958110c8c5a5f6d4509dc6fda9ebd8
+
+COCOAPODS: 1.8.4

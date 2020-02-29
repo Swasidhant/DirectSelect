@@ -20,14 +20,19 @@ class FoodJournalViewController: UIViewController {
     @IBOutlet weak var dishContainer: UIView!
     @IBOutlet weak var mealContainer: UIView!
     
-    private var firstDSSeletorView: UIView?
-    private var secondDSSeletorView: UIView?
-    private var thirdDSSeletorView: UIView?
+    private var firstDSSeletorView: DSInitialView?
+    private var secondDSSeletorView: DSInitialView?
+    private var thirdDSSeletorView: DSInitialView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialUISettings()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        showIntroView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,6 +91,15 @@ class FoodJournalViewController: UIViewController {
             dishContainer.addConstraints(horizontalConstraints)
             dishContainer.addConstraints(verticalConstraints)
         }
+    }
+    
+    private func showIntroView() {
+        firstDSSeletorView?.addAndShowIntroView()
+        Timer.scheduledTimer(timeInterval: 14.0, target: self, selector: #selector(removeIntro), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func removeIntro() {
+        firstDSSeletorView?.removeIntroView()
     }
     
     private func giveDataModel1() -> DSDataModel {

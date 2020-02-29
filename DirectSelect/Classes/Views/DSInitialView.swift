@@ -19,6 +19,8 @@ public class DSDataModel {
         public var finalBGSeparatorColor: UIColor = UIColor.init(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1.0)
         public var finalTitleColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         
+        public var introViewUIModel: DSIntroUIModel?
+        
         public init() {
             
         }
@@ -57,6 +59,7 @@ public final class DSInitialView: UIView {
     }
     
     var inputSubview: CSSubview?
+    var introView: DSIntroView?
     public var viewModel = ViewModel()
     public var delegate: DSInitialViewDelegate?
     
@@ -65,7 +68,7 @@ public final class DSInitialView: UIView {
         setGestures()
     }
     
-    public static func createInstance(model: DSDataModel, delegate: DSInitialViewDelegate?) -> UIView {
+    public static func createInstance(model: DSDataModel, delegate: DSInitialViewDelegate?) -> DSInitialView {
         let bundle = Bundle.csBundle
         let initialView = bundle.loadNibNamed("DSInitialView", owner: nil, options: nil)![0] as! DSInitialView
         initialView.viewModel.assign(model: model)
@@ -151,6 +154,31 @@ public final class DSInitialView: UIView {
 }
 
 extension DSInitialView {
+    public func addAndShowIntroView() {
+        if introView == nil {
+            self.introView = DSIntroView.createInstance(uiModel: self.viewModel.dataModel.uiConfigs.introViewUIModel)
+            introView!.translatesAutoresizingMaskIntoConstraints=false
+            self.addSubview(introView!)
+            
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": introView!])
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": introView!])
+            self.addConstraints(horizontalConstraints)
+            self.addConstraints(verticalConstraints)
+            
+            introView!.startCycle()
+        }
+    }
+    
+    public func removeIntroView() {
+        self.introViewRemove()
+    }
+    
+    private func introViewRemove() {
+        self.introView?.removeFromSuperview()
+    }
+}
+
+extension DSInitialView {
     @objc private func handlePress(gesture: UIGestureRecognizer) {
         if gesture.state == .began {
             showSelector(manuallyStartDismissTimer: false)
@@ -166,6 +194,9 @@ extension DSInitialView: DSDefaultCellSubviewDelegate {
 
 extension DSInitialView {
     private func showSelector(manuallyStartDismissTimer: Bool) {
+        //remove any intro view
+        self.introViewRemove()
+        
         guard let inputSubview = self.inputSubview else {
             return
         }

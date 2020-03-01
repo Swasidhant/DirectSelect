@@ -139,19 +139,11 @@ final class DSFinalView: UIView {
         return view
     }
     
-//    private func initialSettings() {
-//        self.tableView.assignContainer(self)
-//    }
-
     private func initialUISettings() {
         titleLabel.textColor = viewModel.dataModel.uiConfigs.finalTitleColor
         setTableViewInitialUI()
         self.backgroundColor = viewModel.dataModel.uiConfigs.finalBGColor
     }
-    
-//    @objc private func longPress(gesture: UIGestureRecognizer) {
-//        print("long press")
-//    }
     
     private func uiAfterAssign() {
         setTableViewUIAfterAssign()
@@ -275,10 +267,10 @@ extension DSFinalView: UITableViewDataSource {
         return cell
     }
     
-    private func giveSubview() -> CSSubview {
+    private func giveSubview() -> DSSubview {
         if viewModel.dataModel.cellSubviewType == .defaultCell {
             //no need of showing final view from here
-            return CSDefaultCellSubview.createInstance(delegate: nil, optionButtonShown: false)
+            return DSDefaultCellSubview.createInstance(delegate: nil, optionButtonShown: false)
         } else {
             //TODO: change later
             guard let creator = viewModel.dataModel.customSubviewCreator else {
@@ -336,15 +328,6 @@ extension DSFinalView: UIScrollViewDelegate {
     }
 }
 
-/*extension DSFinalView: TableViewContainerReference {
-    func touchesEnded() {
-//        viewModel.scrollDidScroll(block: {
-//            self.setNewValueBeforeDismiss()
-//            self.removeFinalView()
-//        })
-    }
-}*/
-
 extension DSFinalView {
     private func createDividerView() -> UIView {
         let view = UIView()
@@ -394,64 +377,6 @@ extension DSFinalView {
         }
     }
 }
-
-/*protocol TableViewContainerReference: class {
-    func touchesEnded()
-}*/
-
-/*class CSFinalViewTableView: UITableView, UIGestureRecognizerDelegate {
-    private weak var containerReference: TableViewContainerReference?
-    
-    func assignContainer(_ reference: TableViewContainerReference) {
-        self.containerReference = reference
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touches began")
-        super.touchesBegan(touches, with: event)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        print("touches moved")
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        print("touches ended")
-        containerReference?.touchesEnded()
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        print("touches cancelled")
-        
-    }
-    
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        print("hitTest caleld")
-        if let event = event { //, event.type == .touches {
-            let touches = event.touches(for: self)
-            if let touch = touches?.first, touch.phase == .ended {
-                print("hitTest ended")
-                containerReference?.touchesEnded()
-            }
-        }
-        return super.hitTest(point, with: event)
-    }
-    
-    override func touchesShouldBegin(_ touches: Set<UITouch>, with event: UIEvent?, in view: UIView) -> Bool {
-        return true
-    }
-    
-    override func touchesShouldCancel(in view: UIView) -> Bool {
-        return false
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-}*/
 
 class CSThrottler {
     var dispatchItem: DispatchWorkItem?

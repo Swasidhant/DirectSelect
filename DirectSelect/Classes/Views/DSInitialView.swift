@@ -8,17 +8,37 @@ import UIKit
 
 public class DSDataModel {
     public class DSUIConfigs {
+        //should show an options expanding button on the initial view (See the second expanding view in the Example project)
         public var showOptionsButton: Bool = false
+        
+        //tintColor of the options button if its shown
         public var optionsBtnColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        
+        //font of the text on the initial view
         public var initialFont: UIFont = UIFont.systemFont(ofSize: 14.0)
+        
+        //font of the text on the rows of the final tableview
         public var finalFont: UIFont = UIFont.systemFont(ofSize: 18.0)
+        
+        //font of the title of final tableview view
         public var finalTitleFont: UIFont = UIFont.systemFont(ofSize: 18.0)
+        
+        //font color of the text on the initial view
         public var initialFontColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        
+        //font color of the text on the rows of the final tableview
         public var finalFontColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
+        
+        //background color of both the initial View and the final view cells and tableview
         public var finalBGColor: UIColor = UIColor.white
+        
+        //separator color of tableview
         public var finalBGSeparatorColor: UIColor = UIColor.init(red: 243.0/255.0, green: 243.0/255.0, blue: 243.0/255.0, alpha: 1.0)
+        
+        //font color of the title of final tableview view
         public var finalTitleColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         
+        //UI configs of intro view if it is used
         public var introViewUIModel: DSIntroUIModel?
         
         public init() {
@@ -29,17 +49,39 @@ public class DSDataModel {
     public init() {
         
     }
+    
+    //title to display on top of the final tableview
     public var titleString: String?
+    
+    //options to display on top of the final tableview. Type is [Any] as the even custom Subviews are allowed through CSSubview
     public var values: [Any] = []
+    
+    //time interval for which final tableview shows before auto dismissing
     public var longPressDuration: TimeInterval = 1.0
+    
+    //initial index which is selected by default in the tableview
     public var initialIndex: Int = 0
+    
+    //initial data which is shown by default in the tableview
     public var initialData: Any?
+    
+    //case defaultCell - we are using the default view for initial view and final view cells
+    //case customCell - we are custom view for initial view and final view cells
     public var cellSubviewType: CSCellSubviewType = .defaultCell
-    public var subview: UIView?
+    
+    //UI configs instance explained above
     public var uiConfigs = DSUIConfigs()
     
+    //superview on which to add the final Tableview UI as subview
+    //if this is nil, we add the final Tableview UI to the superview of DSinitialView instance
+    //make this nil if the initial view is a direct subview of the view on which you need to present the final tableview UI
+    //other assign this property to the intended superview of the final tableview UI
     public var finalViewSuperview: UIView?
-    public var customSubviewCreator: (() -> CSSubview)?
+    
+    //in case you are using custom subview, this block should return an instance of your custom subview
+    //we call this block when we want to initialize an instance of your subview.
+    //For assigning properties to your subview, we call assignData method of the CSSubview
+    public var customSubviewCreator: (() -> DSSubview)?
 }
 
 public protocol DSInitialViewDelegate: class {
@@ -58,7 +100,7 @@ public final class DSInitialView: UIView {
         }
     }
     
-    var inputSubview: CSSubview?
+    var inputSubview: DSSubview?
     var introView: DSIntroView?
     public var viewModel = ViewModel()
     public var delegate: DSInitialViewDelegate?
@@ -139,9 +181,9 @@ public final class DSInitialView: UIView {
         super.touchesBegan(touches, with: event)
     }*/
     
-    private func giveSubview() -> CSSubview {
+    private func giveSubview() -> DSSubview {
         if viewModel.dataModel.cellSubviewType == .defaultCell {
-            let defaultSubview = CSDefaultCellSubview.createInstance(delegate: self, optionButtonShown: viewModel.dataModel.uiConfigs.showOptionsButton)
+            let defaultSubview = DSDefaultCellSubview.createInstance(delegate: self, optionButtonShown: viewModel.dataModel.uiConfigs.showOptionsButton)
             defaultSubview.setup(optionsButtonColor: viewModel.dataModel.uiConfigs.optionsBtnColor)
             return defaultSubview
         } else {

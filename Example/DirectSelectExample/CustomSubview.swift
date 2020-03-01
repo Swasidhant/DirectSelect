@@ -39,7 +39,7 @@ class CustomSubview: UIView {
 
 }
 
-extension CustomSubview: CSSubview {    
+extension CustomSubview: DSSubview {    
     func giveHorizontalTransformValues() -> [CGFloat] {
         return [CGFloat(7.0), CGFloat(0.0)]
     }

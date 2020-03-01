@@ -25,14 +25,13 @@ TODO: Add long description of the pod here.
   'https://github.com/Swasidhant/DirectSelect'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Swasidhant' => 'swasidhant.chowdhury@paytm.com' }
-  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'Swasidhant' => 'ssprofessional33@gmail.com' }
+  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => 1.0 }
+  s.social_media_url = 'https://twitter.com/Swasidhant7'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'DirectSelect/Classes/**/*'
-#  s.resources = 'CustomSelector/Assets/**/*.*'
    s.resource_bundles = {
      'DirectSelect' => ['DirectSelect/Assets/**/*.*']
    }

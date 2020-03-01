@@ -8,9 +8,13 @@
 import UIKit
 
 public class DSIntroUIModel {
+    //text to coach the user on how to use DirectSelect
     public var introLabelText: String = "Long press to open options, then tap and drag to select."
+    //color of the text which coaches the user on how to use DirectSelect
     public var introLabelColor: UIColor = UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
+    //backgroundColor of the circle view used in the intro screen
     public var circleViewColor: UIColor = UIColor.blue.withAlphaComponent(0.4)
+    //backgroundColor of the halo effect used in the intro screen
     public var haloColor: UIColor = UIColor.init(red: 140.0/255.0, green: 217.0/255.0, blue: 190.0/255.0, alpha: 1.0).withAlphaComponent(0.6)
 }
 

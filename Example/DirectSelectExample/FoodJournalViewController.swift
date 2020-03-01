@@ -191,3 +191,15 @@ extension FoodJournalViewController: DSInitialViewDelegate {
         fatLabel.text = value
     }
 }
+
+extension FoodJournalViewController {
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        self.showJLScreen()
+    }
+    
+    private func showJLScreen() {
+        let jlViewController = self.storyboard?.instantiateViewController(withIdentifier: "JLScene") as! ViewController
+        self.present(jlViewController, animated: true, completion: nil)
+    }
+}

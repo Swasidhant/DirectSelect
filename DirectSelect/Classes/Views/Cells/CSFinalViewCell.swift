@@ -7,18 +7,37 @@
 
 import UIKit
 
-public protocol CSSubview: class {
+public protocol DSSubview: class {
     var delegate: DSDefaultCellSubviewDelegate? {get set}
     
+    //callback when the subview enters the area of selection, (i.e. it enters between the two separator lines in the final tableview UI) you might want to make ui changes here
+    //For example, you might want to make the text font/color changes or background color changes
     func wentInsideSelectionArea()
+    
+    //callback when the subview goes outside the area of selection, (i.e. it enters outside the two separator lines in the final tableview UI) you might want to make ui changes here
     func wentOutsideSelectionArea()
+    
+    //give the list of views who size or position who want to change between the initial and final views
     func giveViewsToAnimate() -> [UIView]
+    
+    //this one's a bit tricky. So basically when we animate between different sizes between initial and final views, the spaces between the views will be different in the initial and final views
+    //so either you can give different constraints and return an array of CGFloat(0.0)s here (with length equal to the no of elements in giveViewsToAnimate())
+    //or you can return the values of how much to move the views in the x-coordinate space
     func giveHorizontalTransformValues() -> [CGFloat]
     
+    //make the initial data and Ui setup of your subview
+    //DSInitialSetupViewType gives whether this subview instance is used in DSInitialView or DSFinalView
     func initialSetup(_ data: Any?, viewType: DSInitialSetupViewType)
+    
+    //make the data assignment
     func assignData(_ data: Any?)
     
+    //give initial sizes of the views you want to be animated (you had passed them in giveViewsToAnimate())
+    //the order should be the same as the order of the views in giveViewsToAnimate()
     func getInitialViewSizes(_ data: Any?) -> [CGSize]
+    
+    //give final sizes of the views you want to be animated (you had passed them in giveViewsToAnimate())
+    //the order should be the same as the order of the views in giveViewsToAnimate()
     func getFinalViewSizes(_ data: Any?) -> [CGSize]
 }
 
@@ -29,7 +48,7 @@ public protocol DSDefaultCellSubviewDelegate: class {
     func showFinalViewAction()
 }
 
-class CSDefaultCellSubview: UIView {
+class DSDefaultCellSubview: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var optionsButton: UIButton!
 
@@ -38,9 +57,9 @@ class CSDefaultCellSubview: UIView {
     
     var delegate: DSDefaultCellSubviewDelegate?
     
-    static func createInstance(delegate: DSDefaultCellSubviewDelegate?, optionButtonShown: Bool) -> CSDefaultCellSubview {
+    static func createInstance(delegate: DSDefaultCellSubviewDelegate?, optionButtonShown: Bool) -> DSDefaultCellSubview {
         let bundle = Bundle.csBundle
-        let view = bundle.loadNibNamed("DSDefaultCellSubview", owner: nil, options: nil)![0] as! CSDefaultCellSubview
+        let view = bundle.loadNibNamed("DSDefaultCellSubview", owner: nil, options: nil)![0] as! DSDefaultCellSubview
         view.delegate = delegate
         view.optionsButton.isHidden = !optionButtonShown
         return view
@@ -68,7 +87,7 @@ class CSDefaultCellSubview: UIView {
     }
 }
 
-extension CSDefaultCellSubview: CSSubview {    
+extension DSDefaultCellSubview: DSSubview {    
     func giveHorizontalTransformValues() -> [CGFloat] {
         return [CGFloat(0.0)]
     }
@@ -136,7 +155,7 @@ class CSCustomSubview: UIView {
 //MARK:- the cell used to show options
 /*******************************************************************************************/
 class DSFinalViewCell: UITableViewCell {
-    var inputSubview: CSSubview?
+    var inputSubview: DSSubview?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -147,7 +166,7 @@ class DSFinalViewCell: UITableViewCell {
         return self.inputSubview == nil
     }
     
-    func assignAndAddSubview(_ subview: CSSubview, initialSetupData: Any?) {
+    func assignAndAddSubview(_ subview: DSSubview, initialSetupData: Any?) {
         if self.inputSubview == nil {
             self.inputSubview = subview
             guard let subview = self.inputSubview as? UIView else {

@@ -8,7 +8,7 @@
 Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-Dropdown-ux
 ">Direct select's</a> design:
 
-![Direct Select Demo](https://giphy.com/gifs/fsJ4oNr1K9PBFzf7tN)
+![Direct Select Demo](https://giphy.com/gifs/fsJ4oNr1K9PBFzf7tN.gif)
 
 [![Twitter](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://twitter.com/Swasidhant7)
 

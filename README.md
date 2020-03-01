@@ -8,7 +8,9 @@
 Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-Dropdown-ux
 ">Direct select's</a> design:
 
-[![Twitter](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flatt)](https://twitter.com/Swasidhant7)
+![Direct Select Demo](https://giphy.com/gifs/fsJ4oNr1K9PBFzf7tN)
+
+[![Twitter](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://twitter.com/Swasidhant7)
 
 ## Requirements
 - iOS 10.0+
@@ -16,7 +18,7 @@ Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-
 - Swift 4.0
 
 ## Installation
-Just add the DirectSelect Directory to your project
+Just add the DirectSelect directory to your project
 
 ## Usage
 **1** Create an instance of DSInitialView from the `createInstance` method. Comply the intended delegate to `DSInitialViewDelegate`, which updates which option the user selected.

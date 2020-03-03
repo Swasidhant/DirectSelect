@@ -1,16 +1,16 @@
 # Direct Select
 
-[![CI Status](https://img.shields.io/travis/Swasidhant/CustomSelector.svg?style=flat)](https://travis-ci.org/Swasidhant/CustomSelector)
-[![Version](https://img.shields.io/cocoapods/v/CustomSelector.svg?style=flat)](https://cocoapods.org/pods/CustomSelector)
-[![License](https://img.shields.io/cocoapods/l/CustomSelector.svg?style=flat)](https://cocoapods.org/pods/CustomSelector)
-[![Platform](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://cocoapods.org/pods/CustomSelector)
+<!--[![CI Status](https://img.shields.io/travis/Swasidhant/DirectSelect.svg?style=flat)](https://travis-ci.org/Swasidhant/DirectSelect)-->
+[![Version](https://img.shields.io/cocoapods/v/DirectSelect.svg?style=flat)](https://cocoapods.org/pods/DirectSelect)
+[![License](https://img.shields.io/cocoapods/l/DirectSelect.svg?style=flat)](https://cocoapods.org/pods/DirectSelect)
+[![Platform](https://img.shields.io/cocoapods/p/DirectSelect.svg?style=flat)](https://cocoapods.org/pods/DirectSelect)
+<!--[![Twitter](https://img.shields.io/cocoapods/badge/DirectSelect.svg?style=flat)](https://twitter.com/Swasidhant7)-->
 
 Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-Dropdown-ux
 ">Direct select's</a> design:
 
 ![](./gif/DSGif.gif)
 
-[![Twitter](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://twitter.com/Swasidhant7)
 
 ## Requirements
 - iOS 8.0+
@@ -19,6 +19,12 @@ Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-
 
 ## Installation
 Just add the DirectSelect directory to your project
+
+Or use Cocoapods:
+
+```ruby
+pod 'DirectSelect'
+```
 
 ## Usage
 **1** Create an instance of DSInitialView from the `createInstance` method. Comply the intended delegate to `DSInitialViewDelegate`, which updates which option the user selected.

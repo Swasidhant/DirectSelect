@@ -13,7 +13,7 @@ Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-
 [![Twitter](https://img.shields.io/cocoapods/p/CustomSelector.svg?style=flat)](https://twitter.com/Swasidhant7)
 
 ## Requirements
-- iOS 10.0+
+- iOS 8.0+
 - Xcode 10.0+
 - Swift 4.0
 

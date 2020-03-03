@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DirectSelect'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'An ios implementation of Virgil Pana\'s DirectSelect'
   s.swift_version    = '4.0'
 
@@ -20,7 +20,7 @@ An ios implementation of Virgil Pana\'s DirectSelect. This library allows custom
   'https://github.com/Swasidhant/DirectSelect'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Swasidhant' => 'ssprofessional33@gmail.com' }
-  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => '1.0.0' }
+  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => '1.0.1' }
   s.social_media_url = 'https://twitter.com/Swasidhant7'
 
   s.ios.deployment_target = '8.0'

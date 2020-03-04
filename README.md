@@ -15,7 +15,7 @@ Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-
 ## Requirements
 - iOS 10.0+
 - Xcode 10.0+
-- Swift 4.0
+- Swift 5.0+
 
 ## Installation
 Just add the DirectSelect directory to your project

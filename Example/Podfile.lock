@@ -1,5 +1,5 @@
 PODS:
-  - DirectSelect (0.1.0)
+  - DirectSelect (1.1.0)
 
 DEPENDENCIES:
   - DirectSelect (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DirectSelect: ab572f069b6bcf25ff25ef8e931bc85145f0e579
+  DirectSelect: 5f5bb9ac8969f207a33a5a0751f184060d56a87c
 
 PODFILE CHECKSUM: 0f7e083b0c958110c8c5a5f6d4509dc6fda9ebd8
 

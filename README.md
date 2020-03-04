@@ -5,7 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/DirectSelect.svg?style=flat)](https://cocoapods.org/pods/DirectSelect)
 [![Platform](https://img.shields.io/cocoapods/p/DirectSelect.svg?style=flat)](https://cocoapods.org/pods/DirectSelect)
 <!--[![Twitter](https://img.shields.io/cocoapods/badge/DirectSelect.svg?style=flat)](https://twitter.com/Swasidhant7)-->
-<a href="https://twitter.com/Swasidhant7">Twitter</a>
 
 Based on Virgil Pana's <a href="https://dribbble.com/shots/3876250-DirectSelect-Dropdown-ux
 ">Direct select's</a> design:
@@ -184,6 +183,7 @@ func getFinalViewSizes(_ data: Any?) -> [CGSize]
 ## Author
 
 Swasidhant, ssprofessional33@gmail.com
+<a href="https://twitter.com/Swasidhant7">Twitter</a>
 
 ## License
 

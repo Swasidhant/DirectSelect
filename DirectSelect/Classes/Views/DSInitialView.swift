@@ -316,7 +316,7 @@ extension DSInitialView {
         animationGroup.duration = 0.3
         animationGroup.isRemovedOnCompletion=false
         animationGroup.animations = [animationX, animationY, animationTranslateX]
-        animationGroup.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
+        animationGroup.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeOut)
         
         view.layer.add(animationGroup, forKey: nil)
     }
@@ -460,7 +460,7 @@ extension DSInitialView: CustomSelectorDelegate {
         animationGroup.duration = 0.3
         animationGroup.isRemovedOnCompletion=false
         animationGroup.animations = [animationXScale, animationYScale, animationYHeight, animationTranslateX]
-        animationGroup.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
+        animationGroup.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeOut)
         
         view.layer.add(animationGroup, forKey: nil)
     }

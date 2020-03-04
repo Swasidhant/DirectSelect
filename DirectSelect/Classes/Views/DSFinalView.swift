@@ -164,7 +164,7 @@ final class DSFinalView: UIView {
     private func setTableViewUIAfterAssign() {
         let upperInset = viewModel.upperContentInset()
         let lowerInset = viewModel.bottomContentInset()
-        tableView.contentInset = UIEdgeInsetsMake(upperInset, 0.0, lowerInset, 0.0)
+        tableView.contentInset = UIEdgeInsets.init(top: upperInset, left: 0.0, bottom: lowerInset, right: 0.0)
     }
     
     private func setTableViewContentOffsetOnLayout() {

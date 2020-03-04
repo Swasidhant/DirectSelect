@@ -8,30 +8,25 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DirectSelect'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of DirectSelect.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version          = '1.0.1'
+  s.summary          = 'An ios implementation of Virgil Pana\'s DirectSelect'
+  s.swift_version    = '4.0'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+An ios implementation of Virgil Pana\'s DirectSelect. This library allows custom subviews as well as an intro view for coaching users on how to use it.
                        DESC
 
   s.homepage         =
   'https://github.com/Swasidhant/DirectSelect'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Swasidhant' => 'ssprofessional33@gmail.com' }
-  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => 1.0 }
+  s.source           = { :git => 'https://github.com/Swasidhant/DirectSelect.git', :tag => '1.0.1' }
   s.social_media_url = 'https://twitter.com/Swasidhant7'
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'DirectSelect/Classes/**/*'
+  s.exclude_files = "DirectSelect/Classes/*.plist"
    s.resource_bundles = {
      'DirectSelect' => ['DirectSelect/Assets/**/*.*']
    }

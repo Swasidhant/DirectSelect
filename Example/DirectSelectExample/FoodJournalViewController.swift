@@ -19,11 +19,16 @@ class FoodJournalViewController: UIViewController {
     @IBOutlet weak var categoryContainer: UIView!
     @IBOutlet weak var dishContainer: UIView!
     @IBOutlet weak var mealContainer: UIView!
+    @IBOutlet weak var quantityContainer: UIView!
+    @IBOutlet weak var quantityIndexContainer: UIView!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var firstDSSeletorView: DSInitialView?
     private var secondDSSeletorView: DSInitialView?
     private var thirdDSSeletorView: DSInitialView?
-    
+    private var fourthDSSeletorView: DSInitialView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initialUISettings()
@@ -41,20 +46,33 @@ class FoodJournalViewController: UIViewController {
     }
     
     private func initialUISettings() {
-        dishContainer.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
-        dishContainer.layer.shadowRadius = 2.0
+        dishContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        dishContainer.layer.shadowRadius = 5.0
         dishContainer.layer.shadowOpacity = 1.0
-        dishContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 0.0)
+        dishContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
+        dishContainer.layer.cornerRadius = 6.0
         
-        categoryContainer.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
-        categoryContainer.layer.shadowRadius = 2.0
+        categoryContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        categoryContainer.layer.shadowRadius = 5.0
         categoryContainer.layer.shadowOpacity = 1.0
-        categoryContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 0.0)
+        categoryContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
+        categoryContainer.layer.cornerRadius = 6.0
 
-        mealContainer.layer.shadowColor = UIColor.lightGray.withAlphaComponent(0.7).cgColor
-        mealContainer.layer.shadowRadius = 2.0
+        mealContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        mealContainer.layer.shadowRadius = 5.0
         mealContainer.layer.shadowOpacity = 1.0
-        mealContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 0.0)
+        mealContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
+        mealContainer.layer.cornerRadius = 6.0
+        
+        quantityContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        quantityContainer.layer.shadowRadius = 5.0
+        quantityContainer.layer.shadowOpacity = 1.0
+        quantityContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
+        
+        quantityIndexContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        quantityIndexContainer.layer.shadowRadius = 5.0
+        quantityIndexContainer.layer.shadowOpacity = 1.0
+        quantityIndexContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
     }
     
     private func addInitialViews() {
@@ -91,6 +109,18 @@ class FoodJournalViewController: UIViewController {
             dishContainer.addConstraints(horizontalConstraints)
             dishContainer.addConstraints(verticalConstraints)
         }
+        
+        if fourthDSSeletorView == nil {
+            fourthDSSeletorView = DSInitialView.createInstance(model: giveDataModel4(), delegate: self)
+            fourthDSSeletorView?.translatesAutoresizingMaskIntoConstraints = false
+            
+            quantityContainer.addSubview(fourthDSSeletorView!)
+            
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["view": self.fourthDSSeletorView!])
+            quantityContainer.addConstraints(horizontalConstraints)
+            quantityContainer.addConstraints(verticalConstraints)
+        }
     }
     
     private func showIntroView() {
@@ -107,8 +137,11 @@ class FoodJournalViewController: UIViewController {
         dataModel.values = ["Breakfast", "First snack", "Lunch", "Second snack", "Dinner", "Third snack"]
         dataModel.longPressDuration = 1.5
         dataModel.initialIndex = 0
-        dataModel.finalViewSuperview = self.view
+        dataModel.finalViewSuperview = self.scrollView
         dataModel.initialData = "Breakfast"
+        dataModel.uiConfigs.initialFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        dataModel.uiConfigs.finalFont = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+        dataModel.uiConfigs.finalTitleNonSelectionStateFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
         dataModel.uiConfigs.finalTitleFont = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
         dataModel.titleString = "Choose Meal"
         return dataModel
@@ -119,10 +152,14 @@ class FoodJournalViewController: UIViewController {
         dataModel.values = ["Vegan", "Eggs", "Chicken", "Mutton", "Fish", "Pork", "Ham"]
         dataModel.longPressDuration = 1.5
         dataModel.initialIndex = 0
-        dataModel.finalViewSuperview = self.view
+        dataModel.finalViewSuperview = self.scrollView
         dataModel.initialData = "Vegan"
+        dataModel.uiConfigs.initialFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        dataModel.uiConfigs.finalFont = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+        dataModel.uiConfigs.finalTitleNonSelectionStateFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
         dataModel.uiConfigs.finalTitleFont = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
         dataModel.uiConfigs.showOptionsButton = true
+        dataModel.uiConfigs.optionsBtnColor = UIColor.init(red: 116.0/255.0, green: 136.0/255.0, blue: 235.0/255.0, alpha: 1.0)
         dataModel.titleString = "Choose Category"
         return dataModel
     }
@@ -132,9 +169,29 @@ class FoodJournalViewController: UIViewController {
         dataModel.values = ["Shallow Fried", "Baked", "Deep fried", "Roasted", "Raw", "Boiled"]
         dataModel.longPressDuration = 1.5
         dataModel.initialIndex = 1
-        dataModel.finalViewSuperview = self.view
+        dataModel.finalViewSuperview = self.scrollView
         dataModel.initialData = "Baked"
+        dataModel.uiConfigs.initialFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        dataModel.uiConfigs.finalFont = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+        dataModel.uiConfigs.finalTitleNonSelectionStateFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
         dataModel.uiConfigs.finalTitleFont = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
+        dataModel.titleString = "Choose Sub category"
+        return dataModel
+    }
+    
+    private func giveDataModel4() -> DSDataModel {
+        let dataModel = DSDataModel()
+        dataModel.values = ["Large portion", "Medium portion", "Small portion", "King size portion"]
+        dataModel.longPressDuration = 1.5
+        dataModel.initialIndex = 1
+        dataModel.finalViewSuperview = self.scrollView
+        dataModel.initialData = "Large portion"
+        dataModel.uiConfigs.initialFont = UIFont.systemFont(ofSize: 12.0, weight: .bold)
+        dataModel.uiConfigs.finalFont = UIFont.systemFont(ofSize: 14.0, weight: .bold)
+        dataModel.uiConfigs.finalTitleNonSelectionStateFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+        dataModel.uiConfigs.finalTitleFont = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
+        dataModel.uiConfigs.showOptionsButton = true
+        dataModel.uiConfigs.optionsBtnColor = UIColor.init(red: 116.0/255.0, green: 136.0/255.0, blue: 235.0/255.0, alpha: 1.0)
         dataModel.titleString = "Choose Sub category"
         return dataModel
     }

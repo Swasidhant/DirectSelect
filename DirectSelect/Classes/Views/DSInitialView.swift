@@ -38,6 +38,15 @@ public class DSDataModel {
         //font color of the title of final tableview view
         public var finalTitleColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
         
+        //font color of the cell texts in non selection state
+        public var defaultSubviewNonSelectionColor: UIColor = UIColor.lightGray
+        
+        //font of the cell title text in non selection state
+        public var finalTitleNonSelectionStateFont: UIFont = UIFont.systemFont(ofSize: 18.0)
+        
+        //tableview row which is selected should first align itself exactly in the selectable area before the final tableview UI is dismissed
+        public var selectedRowShouldCenterBeforeDismiss: Bool = false
+        
         //UI configs of intro view if it is used
         public var introViewUIModel: DSIntroUIModel?
         
@@ -173,13 +182,6 @@ public final class DSInitialView: UIView {
         tapGesture.minimumPressDuration = 0.5
         self.addGestureRecognizer(tapGesture)
     }
-    /*var touches: Set<UITouch>?
-    var event: UIEvent?
-    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touches = touches
-        self.event = event
-        super.touchesBegan(touches, with: event)
-    }*/
     
     private func giveSubview() -> DSSubview {
         if viewModel.dataModel.cellSubviewType == .defaultCell {

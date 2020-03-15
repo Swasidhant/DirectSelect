@@ -51,12 +51,12 @@ final class DSFinalView: UIView {
         }
         
         fileprivate func upperContentInset() -> CGFloat {
-            return initialViewFrameWrtContainer.origin.y - 67.0
+            return initialViewFrameWrtSuperview.origin.y - 67.0
         }
         
         fileprivate func bottomContentInset() -> CGFloat {
             let totalFrame = DSFinalView.giveFrame()
-            return totalFrame.height - (initialViewFrameWrtContainer.origin.y + initialViewFrameWrtContainer.height)
+            return totalFrame.height - (initialViewFrameWrtSuperview.origin.y + initialViewFrameWrtSuperview.height)
         }
         
         mutating fileprivate func madeInitialScrollSetting() {
@@ -71,12 +71,12 @@ final class DSFinalView: UIView {
         
         //divider views
         fileprivate func upperDividerFrame(containerWidth: CGFloat) -> CGRect {
-            let origin = CGPoint.init(x: 0.0, y: initialViewFrameWrtContainer.origin.y)
+            let origin = CGPoint.init(x: 0.0, y: initialViewFrameWrtSuperview.origin.y)
             return CGRect.init(origin: origin, size: CGSize.init(width: containerWidth, height: 1.0))
         }
         
         fileprivate func lowerDividerFrame(containerWidth: CGFloat) -> CGRect {
-            let origin = CGPoint.init(x: 0.0, y: initialViewFrameWrtContainer.maxY - 1.0)
+            let origin = CGPoint.init(x: 0.0, y: initialViewFrameWrtSuperview.maxY - 1.0)
             return CGRect.init(origin: origin, size: CGSize.init(width: containerWidth, height: 1.0))
         }
         
@@ -222,9 +222,23 @@ final class DSFinalView: UIView {
         if let rootWindow = UIApplication.shared.delegate?.window!, let maxAreaCell = maxAreaCell {
             let cellFrameWrtWindow = self.tableView.convert(maxAreaCell.frame, to: rootWindow)
             let heightDiff = cellFrameWrtWindow.origin.y - viewModel.initialViewFrameWrtContainer.origin.y
-            self.delegate?.willRemoveFinalView(heightDiff)
-            removeViewWithAnimation(self)
+            if viewModel.dataModel.uiConfigs.selectedRowShouldCenterBeforeDismiss == true {
+                let earlierYOffset = tableView.contentOffset.y
+                self.tableView.setContentOffset(CGPoint.init(x: tableView.contentOffset.x, y: earlierYOffset + heightDiff), animated: true)
+                //0.35 delay is given, so that the movement happens, there is a slight pause and then the dismiss happens
+                //this gives a good final effect
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35 ) {
+                    self.startRemovalOfView(heightDiff: 0.0)
+                }
+            } else {
+                self.startRemovalOfView(heightDiff: heightDiff)
+            }
         }
+    }
+    
+    private func startRemovalOfView(heightDiff: CGFloat) {
+        self.delegate?.willRemoveFinalView(heightDiff)
+        removeViewWithAnimation(self)
     }
     
     private func removeViewWithAnimation(_ view: UIView) {
@@ -282,13 +296,8 @@ extension DSFinalView: UITableViewDataSource {
 }
 
 extension DSFinalView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectIndex(indexPath.row)
-        removeFinalView()
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.initialViewFrameWrtContainer.height
+        return viewModel.initialViewFrameWrtSuperview.height
     }
 }
 

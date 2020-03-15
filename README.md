@@ -69,6 +69,15 @@ public var finalBGSeparatorColor: UIColor = UIColor.init(red: 243.0/255.0, green
 //font color of the title of final tableview view
 public var finalTitleColor: UIColor = UIColor.init(red: 34.0/255.0, green: 34.0/255.0, blue: 34.0/255.0, alpha: 1.0)
 
+//font color of the cell texts in non selection state
+public var defaultSubviewNonSelectionColor: UIColor = UIColor.lightGray
+
+//font of the cell title text in non selection state
+public var finalTitleNonSelectionStateFont: UIFont = UIFont.systemFont(ofSize: 18.0)
+
+//tableview row which is selected should first align itself exactly in the selectable area before the final tableview UI is dismissed
+public var selectedRowShouldCenterBeforeDismiss: Bool = false
+
 //UI configs of intro view if it is used
 public var introViewUIModel: DSIntroUIModel?
 
@@ -182,8 +191,14 @@ func getFinalViewSizes(_ data: Any?) -> [CGSize]
 
 ## Author
 
-Swasidhant, ssprofessional33@gmail.com
+Swasidhant, ssprofessional33@gmail.com <br/>
 <a href="https://twitter.com/Swasidhant7">Twitter</a>
+
+## Note of Thanks
+
+Special thanks to <a href="https://dribbble.com/Vraj247">Vikas Raj</a> for all his help with the design part. Could not have done it without the motivation, design help and criticism.
+
+<a href="https://twitter.com/Vraj247">Twitter</a>
 
 ## License
 

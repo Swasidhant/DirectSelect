@@ -13,7 +13,7 @@ public class DSIntroUIModel {
     //color of the text which coaches the user on how to use DirectSelect
     public var introLabelColor: UIColor = UIColor.init(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
     //backgroundColor of the circle view used in the intro screen
-    public var circleViewColor: UIColor = UIColor.blue.withAlphaComponent(0.4)
+    public var circleViewColor: UIColor = UIColor.init(red: 112.0/255.0, green: 150.0/255.0, blue: 241.0/255.0, alpha: 1.0)
     //backgroundColor of the halo effect used in the intro screen
     public var haloColor: UIColor = UIColor.init(red: 140.0/255.0, green: 217.0/255.0, blue: 190.0/255.0, alpha: 1.0).withAlphaComponent(0.6)
 }
@@ -71,9 +71,16 @@ class DSIntroView: UIView {
         let firstAnimation = CABasicAnimation()
         firstAnimation.keyPath = "transform.scale.xy"
         firstAnimation.fromValue = 1.0
-        firstAnimation.toValue = 13.0
-        firstAnimation.duration = 1.0
+        firstAnimation.toValue = 1.6
+        firstAnimation.duration = 0.5
         firstAnimation.isRemovedOnCompletion=true
+        
+        let circleViewAnim = CABasicAnimation()
+        circleViewAnim.keyPath = "transform.scale.xy"
+        circleViewAnim.duration = 0.5
+        circleViewAnim.fromValue = 1.0
+        circleViewAnim.toValue = 0.7
+        circleViewAnim.isRemovedOnCompletion = true
         
         CATransaction.begin()
         CATransaction.setCompletionBlock({
@@ -81,18 +88,20 @@ class DSIntroView: UIView {
             completionAnimation.keyPath = "opacity"
             completionAnimation.fromValue = 1.0
             completionAnimation.toValue = 0.0
-            completionAnimation.duration = 0.7
+            completionAnimation.duration = 0.2
             completionAnimation.isRemovedOnCompletion = true
             
             firstHaloLayer.add(completionAnimation, forKey: nil)
-            
+            self.circleView.transform = self.circleView.transform.scaledBy(x: 0.7, y: 0.7)
             CATransaction.begin()
             CATransaction.setCompletionBlock({
+                
                 firstHaloLayer.removeFromSuperlayer()
             })
             
             CATransaction.commit()
         })
+        self.circleView.layer.add(circleViewAnim, forKey: nil)
         firstHaloLayer.add(firstAnimation, forKey: nil)
         CATransaction.commit()
         
@@ -101,12 +110,11 @@ class DSIntroView: UIView {
     
     func createHaloLayer() -> CALayer {
         let haloLayer = CALayer.init()
-        let widthHeight: CGFloat = 5.0
-        let frame = CGRect.init(x: circleView.frame.midX - widthHeight/2.0, y: circleView.frame.midY - widthHeight/2.0, width: widthHeight, height: widthHeight)
+        let frame = self.circleView.frame
         haloLayer.frame = frame
         haloLayer.opacity = 0.4
         haloLayer.backgroundColor = self.uiModel.haloColor.cgColor
-        haloLayer.cornerRadius = widthHeight/2
+        haloLayer.cornerRadius = haloLayer.bounds.width/2.0
         return haloLayer
     }
 }
@@ -114,7 +122,7 @@ class DSIntroView: UIView {
 extension DSIntroView {
     func startCycle() {
         self.animateEffect()
-        timer = Timer.scheduledTimer(timeInterval: 3.5, target: self, selector: #selector(animateEffect), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(animateEffect), userInfo: nil, repeats: true)
     }
     
     @objc private func animateEffect() {
@@ -124,7 +132,7 @@ extension DSIntroView {
             self.setIdentityTransform()
         }) { finished in
             self.animateHalo()
-            UIView.animateKeyframes(withDuration: 0.3, delay: 2.0, options: .beginFromCurrentState, animations: {
+            UIView.animateKeyframes(withDuration: 0.3, delay: 0.8, options: .beginFromCurrentState, animations: {
                 self.setFinalTransform()
             }, completion: { (innerFInished) in
                 

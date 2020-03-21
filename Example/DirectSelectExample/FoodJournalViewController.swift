@@ -46,30 +46,30 @@ class FoodJournalViewController: UIViewController {
     }
     
     private func initialUISettings() {
-        dishContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        dishContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.07).cgColor
         dishContainer.layer.shadowRadius = 5.0
         dishContainer.layer.shadowOpacity = 1.0
         dishContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
         dishContainer.layer.cornerRadius = 6.0
         
-        categoryContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        categoryContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.07).cgColor
         categoryContainer.layer.shadowRadius = 5.0
         categoryContainer.layer.shadowOpacity = 1.0
         categoryContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
         categoryContainer.layer.cornerRadius = 6.0
 
-        mealContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        mealContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.07).cgColor
         mealContainer.layer.shadowRadius = 5.0
         mealContainer.layer.shadowOpacity = 1.0
         mealContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
         mealContainer.layer.cornerRadius = 6.0
         
-        quantityContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        quantityContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.07).cgColor
         quantityContainer.layer.shadowRadius = 5.0
         quantityContainer.layer.shadowOpacity = 1.0
         quantityContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
         
-        quantityIndexContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.14).cgColor
+        quantityIndexContainer.layer.shadowColor = UIColor.black.withAlphaComponent(0.07).cgColor
         quantityIndexContainer.layer.shadowRadius = 5.0
         quantityIndexContainer.layer.shadowOpacity = 1.0
         quantityIndexContainer.layer.shadowOffset = CGSize.init(width: 0.0, height: 2.0)
@@ -192,7 +192,6 @@ class FoodJournalViewController: UIViewController {
         dataModel.uiConfigs.finalTitleFont = UIFont.systemFont(ofSize: 13.0, weight: .semibold)
         dataModel.uiConfigs.showOptionsButton = true
         dataModel.uiConfigs.optionsBtnColor = UIColor.init(red: 116.0/255.0, green: 136.0/255.0, blue: 235.0/255.0, alpha: 1.0)
-        dataModel.titleString = "Choose Sub category"
         return dataModel
     }
 }

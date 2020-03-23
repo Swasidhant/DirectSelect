@@ -193,6 +193,7 @@ func getFinalViewSizes(_ data: Any?) -> [CGSize]
 
 Swasidhant, ssprofessional33@gmail.com <br/>
 <a href="https://twitter.com/Swasidhant7">Twitter</a>
+<a href="https://www.linkedin.com/in/swasidhant-chowdhury-6095b960/"> Linkedin</a>
 
 ## Note of Thanks
 
